@@ -16,7 +16,7 @@ Route.post(
   CreatePostController
 );
 Route.get("/post/:id", FindPostByIdController);
-Route.get("/post", FindPostsController);
+Route.get("/posts", FindPostsController);
 Route.post("/post/update/:id", UpdatePostController);
 Route.delete("/post/remove/:id", RemovePostController);
 
