@@ -33,7 +33,7 @@ const SignInUser = async (req, res) => {
   try {
     const token = jwt.sign(tokenData, process.env.SECRET_JWT);
     res.header("auth", token);
-    return res.status(200).send({ msg: "User Logged!" });
+    return res.status(200).send({ msg: "User Logged!", token });
   } catch (error) {
     return res.status(400).send({ msg: error.message });
   }
