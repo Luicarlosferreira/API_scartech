@@ -8,7 +8,13 @@ const PostRoute = require("./src/routes/postsRoutes");
 
 const PORT = process.env.PORT | 8000;
 app.use(express.json());
-app.use(cors());
+
+// app.use(
+//     cors({
+//       origin: "ClientDNS",
+//       optionsSuccessStatus: 200,
+//     })
+//   );
 app.use("/", UserRoute, ProductRoute, PostRoute);
 
 app.listen(PORT, () => console.log(`server is running on port ${PORT}`));
