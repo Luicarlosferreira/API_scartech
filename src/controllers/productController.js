@@ -13,7 +13,13 @@ const CreateProductController = async (req, res) => {
   const valueImage = await UploadImageStorage(req.file.path);
   const imageUrl = valueImage.url;
   try {
-    const data = await CreateProduct(category, title, price, imageUrl, brand);
+    const data = await CreateProduct({
+      category,
+      title,
+      price,
+      imageUrl,
+      brand,
+    });
     return res.status(200).send({ "product Created": data });
   } catch (error) {
     return res.status(400).send({ msg: error.message });
