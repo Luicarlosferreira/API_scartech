@@ -27,16 +27,17 @@ const CreateProductController = async (req, res) => {
         console.log("error", JSON.stringify(error, null, 2));
       });
 
+    
     const data = await CreateProduct({
       category,
       title,
       price,
       brand,
       image: [
-        {
-          _id: resultImage.public_id,
-          url: resultImage.secure_url,
-        },
+        // {
+        //   _id: resultImage.public_id,
+        //   url: resultImage.secure_url,
+        // },
       ],
     });
     return res.status(200).send({ "product Created": data });
