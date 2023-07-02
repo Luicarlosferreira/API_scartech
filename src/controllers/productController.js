@@ -21,10 +21,7 @@ const CreateProductController = async (req, res) => {
       category,
       title,
       price,
-      imageUrl: {
-        public_id: resultImage.public_id,
-        url: resultImage.secure_url,
-      },
+      imageUrl: resultImage.secure_url,
       brand,
     });
     return res.status(200).send({ "product Created": data });
