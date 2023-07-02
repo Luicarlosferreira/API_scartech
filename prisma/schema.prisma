@@ -23,7 +23,7 @@ model Post {
   id     String @id @default(auto()) @map("_id") @db.ObjectId
   title  String
   description String
-  imageUrl String
+  imageUrl String?
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
   author     User    @relation(fields: [authorId], references: [id])
@@ -35,7 +35,7 @@ model Product{
   category String
   title String
   price String
-  imageUrl String
+  imageUrl String?
   brand String
   author     User    @relation(fields: [authorId], references: [id])
   authorId   String  @db.ObjectId
