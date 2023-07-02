@@ -12,19 +12,20 @@ const CreateProductController = async (req, res) => {
   const { category, title, price, brand, image } = req.body;
   const resultImage = await cloudinary.uploader.upload(image, {
     folder: products,
-    // width: 300,
-    // crop: "scale",
+    width: 300,
+    crop: "scale",
   });
   const imageUrl = resultImage.secure_url;
 
   try {
-    const data = await CreateProduct({
+    const item = {
       category,
       title,
       price,
       imageUrl,
       brand,
-    });
+    };
+    const data = await CreateProduct(item);
     return res.status(200).send({ "product Created": data });
   } catch (error) {
     return res.status(400).send({ msg: error.message });
