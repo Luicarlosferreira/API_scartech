@@ -12,12 +12,9 @@ const CreateProductController = async (req, res) => {
   const { category, title, price, brand, image } = req.body;
 
   try {
-    const resultImage = await cloudinary.uploader.upload(
-      { image },
-      {
-        folder: product,
-      }
-    );
+    const resultImage = await cloudinary.uploader.upload(image, {
+      folder: product,
+    });
 
     const data = await CreateProduct({
       category,
