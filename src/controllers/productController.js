@@ -12,33 +12,18 @@ const CreateProductController = async (req, res) => {
   const { category, title, price, brand, image } = req.body;
 
   try {
-    const resultImage = await cloudinary.uploader
-      .upload(image, {
-        folder: "products",
-        // width: 300,
-        // crop: "scale"
-      })
-      .then((result) => {
-        console.log("Upload successfull", JSON.stringify(result, null, 2));
+    const resultImage = await cloudinary.uploader.upload(image, {
+      folder: "products",
+      // width: 300,
+      // crop: "scale"
+    });
 
-        res.status(200).json(result);
-      })
-      .catch((error) => {
-        console.log("error", JSON.stringify(error, null, 2));
-      });
-
-    
     const data = await CreateProduct({
       category,
       title,
       price,
       brand,
-      image: [
-        // {
-        //   _id: resultImage.public_id,
-        //   url: resultImage.secure_url,
-        // },
-      ],
+      image: [resultImage.public_id, resultImage.secure_url],
     });
     return res.status(200).send({ "product Created": data });
   } catch (error) {
