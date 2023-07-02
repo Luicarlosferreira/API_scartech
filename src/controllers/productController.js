@@ -22,7 +22,6 @@ const CreateProductController = async (req, res) => {
       category,
       title,
       price,
-      imageUrl,
       brand,
     };
     const data = await CreateProduct(item);
