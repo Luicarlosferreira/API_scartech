@@ -29,7 +29,7 @@ const CreateProductController = async (req, res) => {
         },
       ],
     };
-    const data = await CreateProduct(item);
+    const data = await CreateProduct({ item });
     return res.status(200).send({ "product Created": data });
   } catch (error) {
     return res.status(400).send({ msg: error.message });
