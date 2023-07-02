@@ -10,7 +10,7 @@ const {
 } = require("../controllers/userController");
 const SignInUser = require("../controllers/signInController");
 
-Route.post("/userCreate", CreateUserController);
+Route.post("/userCreate", UserAuthentication, CreateUserController);
 Route.get("/manage/users", UserAuthentication, GetAllUsersController);
 Route.get("/manage/user/:id", UserAuthentication, FindUserByIdController);
 Route.put("/manage/user/update/:id", UserAuthentication, UpdateUserController);
