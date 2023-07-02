@@ -21,7 +21,7 @@ const CreateProductController = async (req, res) => {
       category,
       title,
       price,
-      image: {
+      imageUrl: {
         public_id: resultImage.public_id,
         url: resultImage.secure_url,
       },
