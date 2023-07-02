@@ -28,7 +28,7 @@ const CreateProductController = async (req, res) => {
     });
     return res.status(200).send({ "product Created": data });
   } catch (error) {
-    return res.status(400).send({ msg: error.message });
+    return res.status(404).send({ msg: error.message });
   }
 };
 
