@@ -9,7 +9,7 @@ const {
   UpdateProductController,
 } = require("../controllers/productController");
 
-Route.post("/product/create", CreateProductController);
+Route.post("/productCreate", CreateProductController);
 Route.get("/product/:id", FindProductByIdController);
 Route.get("/products", FindProductsController);
 Route.post("/product/update/:id", UpdateProductController);
