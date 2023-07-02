@@ -32,10 +32,10 @@ model Post {
 
 model Product{
   id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
   category String
   title String
   price String
-  userId String @db.ObjectId
   imageUrl String
   brand String
   user User @relation(fields: [userId], references: [id])
