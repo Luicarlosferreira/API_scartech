@@ -9,6 +9,7 @@ const PostRoute = require("./src/routes/postsRoutes");
 const PORT = process.env.PORT | 8000;
 app.use(express.json());
 app.use(cors());
+app.use(express.bodyParser({ limit: "50mb" }));
 
 // app.use(
 //     cors({
