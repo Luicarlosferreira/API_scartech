@@ -13,7 +13,7 @@ const CreateProductController = async (req, res) => {
 
   try {
     const resultImage = await cloudinary.uploader.upload(image, {
-      folder: products,
+      folder: Products,
       width: 300,
       crop: "scale",
     });
