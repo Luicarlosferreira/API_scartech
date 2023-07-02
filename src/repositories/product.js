@@ -1,7 +1,7 @@
 const prisma = require("../../prisma/prisma");
 
 const CreateProduct = async (data) => {
-  const product = await prisma.product.create(data);
+  const product = await prisma.product.create({ data });
   return product;
 };
 
