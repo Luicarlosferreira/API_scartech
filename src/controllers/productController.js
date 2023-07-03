@@ -18,12 +18,17 @@ const CreateProductController = async (req, res) => {
       // crop: "scale"
     });
 
+    const dataImage = {
+      imageId: resultImage.public_id,
+      imageUrl: resultImage.secure_url,
+    };
+
     const data = await CreateProduct({
       category,
       title,
       price,
       brand,
-      image: [resultImage.public_id, resultImage.secure_url],
+      image: dataImage,
     });
     return res.status(200).send({ "product Created": data });
   } catch (error) {

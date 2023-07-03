@@ -14,8 +14,6 @@ model User {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
   email String
   password String
-  posts Post[]
-  products Product[]
   isAdmin Boolean
 }
 
@@ -23,10 +21,9 @@ model Post {
   id     String @id @default(auto()) @map("_id") @db.ObjectId
   title  String
   description String
-  image String[]
+  image Json[]
   createdAt  DateTime   @default(now())
-  updatedAt  DateTime   @updatedAt
-  author     User    @relation(fields: [authorId], references: [id])
+  updatedAt  DateTime   @updatedAt  
   authorId   String  @db.ObjectId  
 }
 
@@ -35,10 +32,8 @@ model Product{
   category String
   title String
   price String
-  image String[]
-  brand String
-  author     User    @relation(fields: [authorId], references: [id])
-  authorId   String  @db.ObjectId
+  image Json[]
+  brand String 
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
 }
