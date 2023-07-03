@@ -9,24 +9,25 @@ const {
 const cloudinary = require("../utils/images/imageStorage");
 
 const CreateProductController = async (req, res) => {
-  const { category, title, price, brand, imageUrl } = req.body;
+  const { category, title, price, brand, image } = req.body;
+
 
   try {
-    const resultImage = await cloudinary.uploader.upload(imageUrl, {
+    const resultImage = await cloudinary.uploader.upload(image, {
       folder: "products",
-      // width: 300,
-      // crop: "scale"
+      width: 300,
+      crop: "scale",
     });
-
+    const imageData = {
+      id: resultImage.public_id,
+      url: resultImage.secure_url,
+    };
     const data = await CreateProduct({
       category,
       title,
       price,
       brand,
-      image: {
-        imageId: resultImage.public_id,
-        imageUrl: resultImage.secure_url,
-      },
+      image: imageData,
     });
     return res.status(200).send({ "product Created": data });
   } catch (error) {
