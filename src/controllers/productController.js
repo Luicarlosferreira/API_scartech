@@ -9,8 +9,7 @@ const {
 const cloudinary = require("../utils/images/imageStorage");
 
 const CreateProductController = async (req, res) => {
-  const { category, title, price, brand, image } = req.body;
-
+  const { category, title, price, description, image } = req.body;
 
   try {
     const resultImage = await cloudinary.uploader.upload(image, {
@@ -26,7 +25,7 @@ const CreateProductController = async (req, res) => {
       category,
       title,
       price,
-      brand,
+      description,
       image: imageData,
     });
     return res.status(200).send({ "product Created": data });
