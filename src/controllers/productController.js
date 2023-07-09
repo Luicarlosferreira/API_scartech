@@ -59,7 +59,7 @@ const UpdateProductController = async (req, res) => {
   const product = { category, title, price, description };
   try {
     const data = await UpdateProductById(id, product);
-    return res.status(200).send({ updated: data });
+    return res.status(200).send({ "Product updated": data });
   } catch (error) {
     return res.status(400).senD({ error: error.message });
   }
