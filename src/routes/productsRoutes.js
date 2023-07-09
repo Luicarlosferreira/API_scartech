@@ -13,7 +13,7 @@ const {
 Route.post("/productCreate", UserAuthentication, CreateProductController);
 Route.get("/product/:id", FindProductByIdController);
 Route.get("/products", FindProductsController);
-Route.post("/product/update/:id", UserAuthentication, UpdateProductController);
+Route.put("/product/update/:id", UserAuthentication, UpdateProductController);
 Route.delete(
   "/product/remove/:id",
   UserAuthentication,
