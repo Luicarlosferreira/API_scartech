@@ -55,10 +55,15 @@ const FindProductByIdController = async (req, res) => {
 
 const UpdateProductController = async (req, res) => {
   const { category, title, price, description } = req.body;
-
-  const product = { category, title, price, description };
+  const update = {
+    category,
+    title,
+    price,
+    description,
+  };
+  const id = req.params.id;
   try {
-    const data = await UpdateProductById({ id: req.params.id }, product);
+    const data = await UpdateProductById(id, update);
     return res.status(200).send({ UpdatedProduct: data });
   } catch (error) {
     return res.status(400).senD({ error: error.message });
