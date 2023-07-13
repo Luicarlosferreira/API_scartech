@@ -19,12 +19,12 @@ const FindProductById = async (id) => {
   return product;
 };
 
-const UpdateProductById = async (data, id) => {
+const UpdateProductById = async (id, data) => {
   const product = await prisma.product.update({
     where: {
       id,
     },
-    data,
+    data: data,
   });
   return product;
 };

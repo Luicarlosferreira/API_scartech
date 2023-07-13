@@ -63,10 +63,12 @@ const UpdateProductController = async (req, res) => {
   };
   const id = req.params.id;
   try {
-    const data = await UpdateProductById(id, update);
-    return res.status(200).send({ UpdatedProduct: data });
+    await UpdateProductById(id, update);
+    return res
+      .status(200)
+      .send({ UpdatedProduct: "product updated with success." });
   } catch (error) {
-    return res.status(400).senD({ error: error.message });
+    return res.status(400).send({ error: error.message });
   }
 };
 const RemoveProductController = async (req, res) => {
