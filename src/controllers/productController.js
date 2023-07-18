@@ -14,8 +14,10 @@ const CreateProductController = async (req, res) => {
   try {
     const resultImage = await cloudinary.uploader.upload(image, {
       folder: "products",
-      width: 300,
-      crop: "scale",
+      width: 500,
+      height: 500,
+      crop: "fill",
+      x,
     });
     const imageData = {
       id: resultImage.public_id,
@@ -34,6 +36,20 @@ const CreateProductController = async (req, res) => {
   }
 };
 
+const RemoveProductController = async (req, res) => {
+  const id = req.params.id;
+  const imageId = req.body;
+  try {
+    await RemoveProduct(id);
+
+    await cloudinary.uploader
+      .destroy(`${imageId}`)
+      .then((result) => console.log(result));
+    return res.status(200).send({ msg: "product deleted with sucess." });
+  } catch (error) {
+    return res.status(400).send({ msg: error.message });
+  }
+};
 const FindProductsController = async (req, res) => {
   try {
     const data = await FindProducts();
@@ -69,15 +85,6 @@ const UpdateProductController = async (req, res) => {
       .send({ UpdatedProduct: "product updated with success." });
   } catch (error) {
     return res.status(400).send({ error: error.message });
-  }
-};
-const RemoveProductController = async (req, res) => {
-  const id = req.params.id;
-  try {
-    await RemoveProduct(id);
-    return res.status(200).send({ msg: "product deleted with sucess." });
-  } catch (error) {
-    return res.status(400).send({ msg: error.message });
   }
 };
 module.exports = {

@@ -29,10 +29,11 @@ const UpdateProductById = async (id, data) => {
   return product;
 };
 
-const RemoveProduct = async (id) => {
+const RemoveProduct = async (id, imageId) => {
   await prisma.product.delete({
     where: {
       id,
+      imageId,
     },
   });
 };
