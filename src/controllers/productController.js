@@ -17,7 +17,6 @@ const CreateProductController = async (req, res) => {
       width: 500,
       height: 500,
       crop: "fill",
-      x,
     });
     const imageData = {
       id: resultImage.public_id,
