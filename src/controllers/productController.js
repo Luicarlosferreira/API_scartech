@@ -37,13 +37,15 @@ const CreateProductController = async (req, res) => {
 
 const RemoveProductController = async (req, res) => {
   const id = req.params.id;
-  const imageId = req.body;
+
   try {
+    //data id to push imageId
+    const data = await FindProductById(id);
+    const imageId = data.image[0].id;
+
+    await cloudinary.uploader.destroy(imageId);
     await RemoveProduct(id);
 
-    await cloudinary.uploader
-      .destroy(`${imageId[0]}`)
-      .then((result) => console.log(result));
     return res.status(200).send({ msg: "product deleted with sucess." });
   } catch (error) {
     return res.status(400).send({ msg: error.message });
