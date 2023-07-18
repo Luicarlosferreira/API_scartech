@@ -43,7 +43,7 @@ const RemoveProductController = async (req, res) => {
     await RemoveProduct(id);
 
     await cloudinary.uploader
-      .destroy(`${imageId}`)
+      .destroy(`${imageId[0]}`)
       .then((result) => console.log(result));
     return res.status(200).send({ msg: "product deleted with sucess." });
   } catch (error) {
