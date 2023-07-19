@@ -64,7 +64,7 @@ const UpdateUserController = async (req, res) => {
     const user = {
       email: email,
       password: password && bcrypt.hashSync(password, 5),
-      isAdmin: isAdmin,
+      isAdmin,
     };
 
     const data = await UpdateUserById(user, id);
