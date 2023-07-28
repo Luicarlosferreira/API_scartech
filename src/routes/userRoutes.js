@@ -11,8 +11,8 @@ const {
 const SignInUser = require("../controllers/signInController");
 
 Route.post("/userCreate", UserAuthentication, CreateUserController);
-Route.get("/manage/users", UserAuthentication, GetAllUsersController);
-Route.get("/manage/user/:id", UserAuthentication, FindUserByIdController);
+Route.get("/manage/users", GetAllUsersController);
+Route.get("/manage/user/:id", FindUserByIdController);
 Route.put("/manage/user/update/:id", UserAuthentication, UpdateUserController);
 Route.delete(
   "/manage/user/remove/:id",
